@@ -1,0 +1,7 @@
+.vscode/
+.ccls-cache/
+
+build/
+submodules/
+
+compile_commands.json
