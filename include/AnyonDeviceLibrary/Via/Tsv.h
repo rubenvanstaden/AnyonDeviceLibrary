@@ -23,8 +23,6 @@ namespace AnyonDeviceLibrary {
         public:
 
             struct Parameters {
-                AnyonChipDesigner::ThroughSiliconVia::TSVInfo tsv_info;
-
                 size_t ground_number_via = 8;
                 bool shouldIncludeBlankVia = false;
 

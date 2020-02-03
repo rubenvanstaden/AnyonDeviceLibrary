@@ -12,6 +12,12 @@
 #include <AnyonLayoutGenerator/GDS/Library.h>
 
 #include <AnyonDeviceLibrary/Via/Tsv.h>
+#include <AnyonDeviceLibrary/Bandaid/TeeBandaid.h>
+#include <AnyonDeviceLibrary/Bandaid/ThreeTierBandaid.h>
+#include <AnyonDeviceLibrary/Bandaid/RectangularBandaid.h>
+#include <AnyonDeviceLibrary/Junction/JunctionHook.h>
+#include <AnyonDeviceLibrary/Electrode/LargeElectrode.h>
+#include <AnyonDeviceLibrary/Electrode/CompactElectrode.h>
 
 using namespace AnyonLayoutGenerator;
 using namespace AnyonDeviceLibrary;
@@ -28,47 +34,83 @@ void tsvTest() {
     lib.outputGDSII("tsv.gds");
 }
 
-// void airbridgeTest() {
+void teeBandaidTest() {
 
-//     GDS::Library lib("Library");
+    GDS::Library lib("Library");
 
-//     TwelveQubit::Airbridge::Info airbridge_info;
-//     auto D0 = TwelveQubit::Airbridge("AirbridgeCell", airbridge_info);
+    PCell::TeeBandaid::Parameters tee_bandaid_params;
+    auto D0 = PCell::TeeBandaid("TeeBandaid", tee_bandaid_params);
 
-//     lib.addCell<TwelveQubit::Airbridge>(D0);
-//     lib.outputGDSII("airbridge.gds");
-// }
+    lib.addCell<PCell::TeeBandaid>(D0);
+    lib.outputGDSII("tee_bandaid.gds");
+}
 
-// void clawTest() {
+void threeTierBandaidTest() {
 
-//     GDS::Library lib("Library");
+    GDS::Library lib("Library");
 
-//     TwelveQubit::Claw::Info claw_info;
-//     auto D0 = TwelveQubit::Claw("ClawCell", claw_info);
+    PCell::ThreeTierBandaid::Parameters three_tier_bandaid_params;
+    auto D0 = PCell::ThreeTierBandaid("ThreeTierBandaid", three_tier_bandaid_params);
 
-//     lib.addCell<TwelveQubit::Claw>(D0);
-//     lib.outputGDSII("claw.gds");
-// }
+    lib.addCell<PCell::ThreeTierBandaid>(D0);
+    lib.outputGDSII("three_tier_bandaid.gds");
+}
 
-// void couplerIslandTest() {
+void rectangularBandaid() {
 
-//     GDS::Library lib("Library");
+    GDS::Library lib("Library");
 
-//     TwelveQubit::CouplerIsland::Info coupler_island_info;
-//     auto D0 = TwelveQubit::CouplerIsland("CouplerCell", coupler_island_info);
+    PCell::RectangularBandaid::Parameters rectangular_bandaid_params;
+    auto D0 = PCell::RectangularBandaid("RectangularBandaid", rectangular_bandaid_params);
 
-//     lib.addCell<TwelveQubit::CouplerIsland>(D0);
-//     lib.outputGDSII("coupler_island.gds");
-// }
+    lib.addCell<PCell::RectangularBandaid>(D0);
+    lib.outputGDSII("rectangular_bandaid.gds");
+}
+
+void junctionHookTest() {
+
+    GDS::Library lib("Library");
+
+    PCell::JunctionHook::Parameters junction_hook_params;
+    auto D0 = PCell::JunctionHook("JunctionHook", junction_hook_params);
+
+    lib.addCell<PCell::JunctionHook>(D0);
+    lib.outputGDSII("junction_hook.gds");
+}
+
+void largeElectrodeTest() {
+
+    GDS::Library lib("Library");
+
+    PCell::LargeElectrode::Parameters large_electrode_params;
+    auto D0 = PCell::LargeElectrode("LargeElectrode", large_electrode_params);
+
+    lib.addCell<PCell::LargeElectrode>(D0);
+    lib.outputGDSII("large_electrode.gds");
+}
+
+void compactElectrodeTest() {
+
+    GDS::Library lib("Library");
+
+    PCell::CompactElectrode::Parameters compact_electrode_params;
+    auto D0 = PCell::CompactElectrode("CompactElectrode", compact_electrode_params);
+
+    lib.addCell<PCell::CompactElectrode>(D0);
+    lib.outputGDSII("compact_electrode.gds");
+}
 
 int main() {
 
     std::cout << "\nStart program..." << std::endl;
 
-    tsvTest();
-    // airbridgeTest();
-    // clawTest();
-    // couplerIslandTest();
+    // tsvTest();
+    // teeBandaidTest();
+    // threeTierBandaidTest();
+    // rectangularBandaid();
+    // junctionHookTest();
+    // largeElectrodeTest();
+    compactElectrodeTest();
 
     std::cout << "End program...\n" << std::endl;
 }
